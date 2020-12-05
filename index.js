@@ -25,7 +25,7 @@ const speed = 200 // Measured in milliseconds
 const debug = false // Debug Mode : Set to true or false
 let socks5 = false // Using Socks5 Proxies (force turned off if autograbproxy is on) : Set to true or false
 const autogen = true // Generates codes and checks them : Set to true or false
-const noerrormessages = true // Doesn't show error messages : Set to true or false
+const noerrormessages = false // Doesn't show error messages : Set to true or false
 const autograbproxy = true // Automatically grab proxies : Set to true or false
 
 let i = 0 // DO NOT CHANGE THIS!
@@ -36,7 +36,7 @@ if (autograbproxy) {
   request.get({
     uri: 'https://api.proxyscrape.com/?request=getproxies&proxytype=http&timeout=200',
 }, function (err, resp, body) {
-  fs.writeFile('proxies.txt', body, function(err) {
+  fs.writeFile('./files/proxies.txt', body, function(err) {
     if(err) {
         throw err;
     }
@@ -89,7 +89,7 @@ request.get({
             body = JSON.parse(body);
             if(body.message != "Unknown Gift Code" && body.message != "You are being rate limited."){
                 console.log(colors.green(`[CHECKER] Code Found!: https://discord.gift/${code}`));
-                fs.appendFileSync("working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
+                fs.appendFileSync("./files/working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
                 i++
                 a++
             } //" 4x31. IT#1337
@@ -120,7 +120,7 @@ request.get({
             body = JSON.parse(body);
             if(body.message != "Unknown Gift Code" && body.message != "You are being rate limited." && body.message != "404: Not Found"){
                 console.log(colors.green(`[CHECKER] Code Found!: https://discord.gift/${code}`));
-                fs.appendFileSync("working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
+                fs.appendFileSync("./files/working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
                 i++
                 a++
             }
@@ -161,7 +161,7 @@ request.get({
             body = JSON.parse(body);
             if(body.message != "Unknown Gift Code" && body.message != "You are being rate limited." && body.message != "404: Not Found"){
                 console.log(colors.green(`[CHECKER] Code Found!: https://discord.gift/${code}`));
-                fs.appendFileSync("working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
+                fs.appendFileSync("./files/working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
                 i++
                 a++
             }
@@ -192,7 +192,7 @@ request.get({
             body = JSON.parse(body);
             if(body.message != "Unknown Gift Code" && body.message != "You are being rate limited." && body.message != "404: Not Found"){
                 console.log(colors.green(`[CHECKER] Code Found!: https://discord.gift/${code}`));
-                fs.appendFileSync("working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
+                fs.appendFileSync("./files/working.txt", code+'\n', "UTF-8",{'flags': 'a+'});
                 a++
                 i++
             }
